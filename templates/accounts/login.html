@@ -1,0 +1,31 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+		<!-- SECTION -->
+		<div class="section">
+			<div class="log-in">
+                <h4>LOG IN</h4>
+                <form class="login-form" action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <!-- <div class="form-group">
+                        <label for="email">Enter your email adress</label>
+                        <input type="email" name="email" class='form-control' id="login-email" placeholder="Email">
+                    </div> -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="username" required>
+                      </div>
+                    <div class="form-group">
+                        <label for="password2">Enter your password</label>
+                        <input type="password" name="password" class='form-control' id="login-password" placeholder="password">
+                    </div>
+                    <button class="signup-btn" type="submit">Log In </button>
+                    <a href="{% url 'reset_password' %}" class="forget">Forget password?</a>
+                    <div class="already">
+                        <a href="{% url 'register' %}">DONT HAVE AN ACCOUNT?</a>
+                    </div>
+                </form>
+			</div>
+		</div>
+		<script src="{% static 'js/validate.js' %}"></script>
+{% endblock content %}

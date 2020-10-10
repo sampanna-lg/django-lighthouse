@@ -1,0 +1,132 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+ 
+<!-- SECTION --> 
+
+    <div class="container view-cart">
+        <div class="col-lg-12">
+            <div class="box-element">
+                <a class="btn btn-outline-dark" href="{% url 'index' %}">&#x2190; Continue Shopping</a>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th>
+                            <h5>Items: <strong>{{ shopcart.count }}</strong></h5>
+                        </th> 
+                        <th>
+                            <h5>Total:<strong> Rs.{{whole_total}}</strong></h5>
+                        </th>
+                        <th>
+                            <a style="float:right; margin:5px;" class="btn btn-success"
+                                href="{% url 'checkout' %}">Checkout</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="box-element">
+                <div class="cart-row">
+                    <div style="flex:2; text-align: left;"><strong>Item</strong></div>
+                    <div style="flex:2; text-align: center;"><strong>Title</strong></div>
+                    <div style="flex:1; text-align: center;"><strong>Price</strong></div>
+                    <!-- <div style="flex:1; text-align: center;"><strong>Variation</strong></div> -->
+                    <div style="flex:1; text-align: center;"><strong>Quantity</strong></div>
+                    <div style="flex:1; text-align: center;"><strong>Total</strong></div>
+                    <div style="flex:1; text-align: center;"><strong></strong></div>
+                </div>
+       
+
+                {% for item in shopcart %}
+                <div class="cart-row">
+
+
+
+                    <div style="flex:2"><img class="row-image" src="{{ item.product.photo_main.url }}"></div>
+               
+                    <div style="flex:2; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                        <p>{{item.product.title}}</p>
+
+                    </div>
+                    <div style="flex:1; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                        <p>{{item.product.price}}</p>
+
+                    </div>
+                    <!-- <div style="flex:1; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                        <p>{{item.variations.all}}</p>
+
+                    </div> -->
+                    <div style="flex:1; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                        <p class="quantity">{{item.quantity}}</p>
+                        <div class="quantity">
+                            <!-- <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart"
+                                src="{% static './img/arrow-up.png' %}">
+
+                            <img data-product="{{item.product.id}}" data-action="remove"
+                                class="chg-quantity update-cart" src="{% static './img/arrow-down.png' %}"> -->
+                        </div>
+                    </div>
+                    <div style="flex:1; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                            {{item.amount}}
+                    </div>
+                    <div style="flex:1; border-left: 0.5px solid rgba(128, 128, 128, 0.253); text-align: center;">
+                        <form action="/removecart/{{item.id}}/" method="POST">
+                            {% csrf_token %}
+                        <button class="remove" type="submit"><i class="fa fa-minus"></i></button></form>
+                    </div>                    
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<style>
+    .view-cart {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box-element {
+        box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .quantity {
+        display: inline-block;
+        font-weight: 700;
+        padding-right: 10px;
+    }
+
+    .cart-row {
+        display: flex;
+        align-items: flex-stretch;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ececec;
+
+    }
+
+    .row-image {
+        width: 100px;
+    }
+
+    .chg-quantity {
+        width: 12px;
+        cursor: pointer;
+        display: block;
+        margin-top: 5px;
+        transition: .1s;
+    }
+
+    .chg-quantity:hover {
+        opacity: .6;
+    }
+    .remove{
+        border: none;
+        background-color: #fff;
+    }
+</style>
+{% endblock content %}

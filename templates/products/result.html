@@ -1,0 +1,114 @@
+
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+		<!-- SECTION -->
+		<div class="container" id="search-container">
+			<div class="container" id="search-heading"> 
+				<h4 class="col-sm-3" >You searched for : </h4><span class="col-sm-9"> {{query}}</span> 
+            </div>
+            {% if query|length < 1 %}
+            <p><br>Your search - {{query}}- did not match any document</p>
+     
+            {% elif query|length > 200  %}
+            <p>       <ul>
+                <li><b>Suggestions:</b></li>
+                <li>Try different suggestions</li>
+                <li>Try different Keywords</li>
+                <li>Try different suggestions</li>
+            </ul>
+</p>
+
+            {% endif %}
+            <div class="clearfix visible-xs"></div>
+            <div class="row">
+                {% for product in products %}
+                <a href="{{product.get_absolute_url }}">
+                <!-- product -->
+                <div class="col-md-3 col-xs-6"> 
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="{{ product.photo_main.url }}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">{{product.category}}</p>
+                            <h3 class="product-name"><a href="{{product.get_absolute_url }}">{{product}}</a></h3>
+                            <h4 class="product-price">Rs.{{product.price}} <del class="product-old-price">Rs.{{product.price}}</del></h4>
+                            <div class="product-rating">
+                            </div>
+                            <div class="product-btns">
+                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>								
+                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                <!-- product ends -->
+                {% endfor %}
+            </div>
+            <div class="clearfix visible-xs"></div>
+            <div class="container" id="search-heading"> 
+				<h4 class="col-sm-3" >related-search for: </h4><span class="col-sm-9"> {{query}}</span> 
+            </div>
+            <div class="row">
+                
+                {% for product in productsAdd %}
+                <!-- product starts -->
+                <a href="{{product.get_absolute_url }}">
+                <div class="col-md-3 col-xs-6">
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="{{ product.photo_main.url }}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">{{product.category}}</p>
+                            <h3 class="product-name"><a href="{{product.get_absolute_url }}">{{product.title}}</a></h3>
+                            <h4 class="product-price">Rs.{{product.price}} <del class="product-old-price">Rs.{{product.price}}</del></h4>
+                            <div class="product-rating">
+                            </div>
+                            <div class="product-btns">
+                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>								
+                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                <!-- products end -->
+                {% endfor %}
+
+            </div>
+        </div>
+    <style>
+    #search-container{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 0.5px solid rgb(236, 238, 240);
+        box-shadow: hsl(0, 0%, 6%) 0 0 10px;
+    }
+    #search-heading{
+        width: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-bottom:0.5px solid rgb(1, 23, 32);
+        text-transform: capitalize;
+        /* border: 0.5px solid rgb(1, 23, 32); */
+        padding: 8px;
+        /* box-shadow: hsl(222, 38%, 10%) 0 0 6px; */
+        color: rgba(0, 0, 0, 0.7);
+    } 
+    #search-heading h4{
+        padding-left: 80px !important;
+    }
+    #search-heading span{
+        padding-left: 0px !important;
+        font-size: 16px;
+        font-weight: 600;
+    
+    }
+    </style>
+    {% endblock content %}
+
+
+
