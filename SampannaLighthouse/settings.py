@@ -14,7 +14,7 @@ SECRET_KEY = '88&8ell**qwtds-u*zh-%p3#moay%-^1v(*=jo(b82dqc-+%uk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['67.207.84.6']
+ALLOWED_HOSTS = ['159.65.229.7']
  
 
 #for gmail.....
@@ -97,9 +97,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'mylighthouse',
-            'USER': 'mylighthouseuser',
-            'PASSWORD': 'admin1234',
+            'NAME': 'lighthousedb',
+            'USER': 'lighthousedbuser',
+            'PASSWORD': 'nginxadmin4321',
             'HOST' : 'localhost',
             'PORT': '',
         }
