@@ -14,7 +14,7 @@ SECRET_KEY = '88&8ell**qwtds-u*zh-%p3#moay%-^1v(*=jo(b82dqc-+%uk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['159.65.229.7']
+ALLOWED_HOSTS = ['159.65.229.7', '127.0.0.1']
  
 
 #for gmail.....

@@ -4,9 +4,11 @@
 		<!-- SECTION -->
 		<div class="section">
 			<div class="signup">
-                <h3>CREATE A NEW ACOUNTS</h3>
+                <center><h3>CREATE A NEW ACCOUNT</h3></center>
 				<form class="signup-form" action="{% url 'register' %}" method="POST" onsubmit="return validateform()">
 					{% csrf_token %}
+
+				
 					<div class="form-group">
 						<label for="fname">First Name <small class="Must"> *</small></label> <br>
 						<input name="fname" id="fname" type="text" placeholder="First name" class="form-control" required>

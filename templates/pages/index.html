@@ -9,6 +9,7 @@
 	<title>HOME- Sampanna Light House</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon_io/apple-touch-icon.png' %}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon_io/favicon-32x32.png' %}">
+	
 	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_io/favicon-16x16.png' %}">
 	<link rel="manifest" href="{% static 'favicon_io/site.webmanifest' %}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -28,6 +29,9 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 </head>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="WVjVw7Yr">
+</script>
 <style>
 	.img_size {
 		display: inline-block;
@@ -167,6 +171,13 @@
 			</nav>
 		</div>
 	</header>
+
+	{% if messages %}
+		{% for message in messages %}
+				{{message}}
+		{% endfor %}
+	{% endif %}
+
 	{% block content %}
 	<div class="container-fluid " id="banner">
 		<div class="row">
@@ -229,7 +240,7 @@
 							<img src="{% static './img/shop02.png' %}" alt="">
 						</div>
 						<div class="shop-body">
-							<h3>switch<br>Collection</h3>
+							<h3>Switch<br>Collection</h3>
 							<a href="{% url 'switch' %}" class="cta-btn">Shop now <i
 									class="fa fa-arrow-circle-right"></i></a>
 						</div>
@@ -262,13 +273,15 @@
 								<div class="products-slick" data-nav="#slick-nav-1">
 									{% for product in products %}
 									<!-- each product -->
-									
+									{% if product.is_new %}
 									<div class="product">
 										<a href="productview/{{product.id}}">
 										<div class="product-img">									
 												<img class="img_size" src="{{ product.photo_main.url }}" alt="">
 											<div class="product-label">
+												
 												<span class="new">NEW</span>
+											
 											</div>
 										</div>
 										</a>
@@ -277,9 +290,11 @@
 											<h3 class="product-name" ><a
 													href="productview/{{product.id}}">{{product.title}}</a></h3>
 											<h4 class="product-price" >Rs{{product.price}}
-												<del class="product-old-price">Rs{{product.price}}</del></h4>											
+												<!-- <del class="product-old-price">Rs{{product.price}}</del> -->
+											</h4>											
 										</div>	
 									</div>
+									{% endif %}
 									
 									{% endfor %}
 								</div>
@@ -399,7 +414,9 @@
 										<div class="product-body">
 											<p class="product-category">{{product.category}}</p>
 											<h3 class='product-name' ><a href="productview/{{product.id}}">{{product.title}}</a></h3>
-											<h4 class="product-price">Rs.{{product.price}} <del class="product-old-price">Rs.{{product.price}}</del></h4>
+											<h4 class="product-price">Rs.{{product.price}}
+												 <!-- <del class="product-old-price">Rs.{{product.price}}</del> -->
+												</h4>
 										</div>
 									</div>
 								</div> 

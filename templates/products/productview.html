@@ -54,7 +54,7 @@
 			<div class="col-md-5">
 				<div class="product-details">
 					<h2 class="product-name">{{product.title}}</h2>
-					<div>
+					<!-- <div>
 						<div class="product-rating">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -63,11 +63,12 @@
 							<i class="fa fa-star-o"></i>
 						</div>
 						<a class="review-link" href="#">10 Review(s) | Add your review</a>
-					</div>
+					</div> -->
 					<div>
-						<h3 class="product-price">Rs.{{product.price}} <del
-								class="product-old-price">Rs.{{product.price}}</del></h3>
-						<span class="product-available">In Stock</span>
+						<h3 class="product-price">Rs.{{product.price}}
+							 <!-- <del class="product-old-price">Rs.{{product.price}}</del> -->
+							</h3>
+						<!-- <span class="product-available">In Stock</span> -->
 					</div>
 					<p>{{product.description}}</p>
 
@@ -135,6 +136,7 @@
 					</ul>
 
 				</div>
+				<div class="fb-share-button" data-href="http://159.65.229.7/productview/{{product.id}}/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fproductview%2F1%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 			</div>
 			<!-- Product tab -->
 			<div class="col-md-12">
@@ -238,7 +240,7 @@
 										<div class="review-heading">
 											<h5 class="name">{{user_comment.user.username}}</h5>
 											<p class="date">{{user_comment.date_added}}</p>
-											<!-- <div class="review-rating">
+				 							<!-- <div class="review-rating">
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>

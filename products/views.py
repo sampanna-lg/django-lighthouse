@@ -2,9 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category, Brand, Sub_Cat, Comment
 from django.http import HttpResponseRedirect
 from order.models import ShopCart
-
+from django.core.paginator import Paginator
 def light(request):
     product = Product.objects.filter(category= 2)
+    paginator= Paginator(product, 1)
+    page= request.GET.get('page')
+    product = paginator.get_page(page)
     current_user = request.user
     shopcart = ShopCart.objects.filter(user_id = current_user.id)
     count = shopcart.count()
@@ -27,6 +30,9 @@ def light(request):
 
 def switch(request):
     product = Product.objects.filter(category= 1)
+    paginator= Paginator(product, 1)
+    page= request.GET.get('page')
+    product = paginator.get_page(page)
     current_user = request.user
     shopcart = ShopCart.objects.filter(user_id = current_user.id)
     count = shopcart.count()
@@ -39,9 +45,13 @@ def switch(request):
 
 def cable(request): 
     product = Product.objects.filter(category= 3)
+    paginator= Paginator(product, 1)
+    page= request.GET.get('page')
+    product = paginator.get_page(page)
     current_user = request.user
     shopcart = ShopCart.objects.filter(user_id = current_user.id)
     count = shopcart.count()
+   
    
     context= {
         'products' : product,
@@ -51,6 +61,9 @@ def cable(request):
 
 def gadget(request):
     product = Product.objects.filter(category= 4)
+    paginator= Paginator(product, 1)
+    page= request.GET.get('page')
+    product = paginator.get_page(page)
     current_user = request.user
     shopcart = ShopCart.objects.filter(user_id = current_user.id)
     count = shopcart.count()

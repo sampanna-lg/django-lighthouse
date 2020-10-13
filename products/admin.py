@@ -3,8 +3,8 @@ from django.contrib import admin
 from .models import Category, Product, Brand, Sub_Cat, Comment
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'category', 'price', 'is_published', 'is_topselling')
-    list_editable = ('is_published', 'is_topselling' )
+    list_display = ('id', 'title', 'category', 'price', 'is_published', 'is_topselling','is_new')
+    list_editable = ('is_published', 'is_topselling', 'is_new' )
     list_display_link = ('id', 'title', 'category')
     search_fields = ('name', 'email')
     list_per_page = 20

@@ -26,6 +26,11 @@
                     </div>
                 </form>
 			</div>
-		</div>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+        {% endif %}
 		<script src="{% static 'js/validate.js' %}"></script>
 {% endblock content %}

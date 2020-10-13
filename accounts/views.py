@@ -80,7 +80,7 @@ def login(request):
         return redirect('/')
     else:
 
-        if request.method == 'POST':
+        if request.method == 'POST': 
             username = request.POST['username']
             password = request.POST['password']
             # print(email)

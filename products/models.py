@@ -63,6 +63,7 @@ class Product(models.Model):
     list_date = models.DateTimeField(default= datetime.now, blank= True)
     is_published = models.BooleanField(default=True)
     is_topselling = models.BooleanField(default=False)
+    is_new = models.BooleanField(default=False)
     
  
     def __str__(self):
