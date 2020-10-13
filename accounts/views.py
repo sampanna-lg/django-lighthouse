@@ -47,14 +47,14 @@ def register(request):
                     userprofile.address= "lalp"
                     userprofile.save()
                     
-                    subject = 'Thank you for pre-order from Sampannalighthouse'
+                    subject = 'Greetings from Sampannalighthouse'
                     message = "Welcome to Sampanna Light House. We are vey glad that you logged in to our website./n So, enjoy your day!"
                     from_email = settings.EMAIL_HOST_USER
                     to_list = [user.email, settings.EMAIL_HOST_USER]
                     send_mail(subject, message, from_email, to_list, fail_silently= True)
 
 
-                    messages.success(request, 'you are now registered in')
+                    messages.success(request, 'You are now registered in')
                     return redirect('login')
         else:
             messages.error(request, 'Password donot match')
